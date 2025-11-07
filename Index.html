@@ -1,4 +1,4 @@
-<!-- saved from url=(0051)file:///C:/Users/DELL/Downloads/Anirban_Dey_CV.html -->
+
 <!doctype html>
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <script src="./Anirban Dey - CV_files/html-to-image.min.js.download" integrity="sha512-iZ2ORl595Wx6miw+GuadDet4WQbdSWS3JLMoNfY8cRGoEFy6oT3G9IbcrBeL6AfkgpA51ETt/faX6yLV+/gFJg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -84,7 +84,7 @@
           return pendingBlobs.get(blobId);
         };
 
-        // Override global fetch with streaming support
+       
         window.fetch = (url, init = {}) => {
           return new Promise((resolve, reject) => {
             const id = requestId++;
@@ -92,7 +92,7 @@
             
             callbacksMap.set(id, { 
               resolve: (response) => {
-                // Create a ReadableStream for the response body
+               
                 const stream = new ReadableStream({
                   start(controller) {
                     streamControllers.set(channelId, controller);
@@ -102,7 +102,7 @@
                   }
                 });
                 
-                // Create and return the Response with the stream
+                
                 resolve(new Response(stream, {
                   status: response.status,
                   statusText: response.statusText,
@@ -154,19 +154,19 @@
               callback.reject(new Error(event.data.error));
               callbacksMap.delete(event.data.id);
             } else {
-              // Initial response with headers, status, etc.
+           
               callback.resolve({
                 status: event.data.status,
                 statusText: event.data.statusText,
                 headers: event.data.headers
               });
-              // Don't delete the callback yet if streaming
+             
               if (!event.data.body) {
                 callbacksMap.delete(event.data.id);
               }
             }
           } else if (event.data.type === 'proxyFetchStream') {
-            // Handle streaming data chunks
+           
             const controller = streamControllers.get(event.data.channelId);
             if (controller) {
               if (event.data.error) {
@@ -175,7 +175,7 @@
               } else if (event.data.done) {
                 controller.close();
                 streamControllers.delete(event.data.channelId);
-                // Clean up the callback
+               
                 const callback = Array.from(callbacksMap.entries()).find(
                   ([_, value]) => value.channelId === event.data.channelId
                 );
@@ -225,7 +225,7 @@
           const isEl = event.target instanceof HTMLElement;
           if (!isEl) return;
     
-          // find ancestor links
+          
           const linkEl = event.target.closest("a");
           if (!linkEl || !linkEl.href) return;
     
@@ -292,7 +292,7 @@
     <title>Anirban Dey - CV</title>
     <link href="./Anirban Dey - CV_files/all.min.css" rel="stylesheet">
     <style>
-        /* Add download functionality */
+     
         .download-btn {
             position: fixed;
             top: 20px;
@@ -378,7 +378,7 @@
             object-fit: cover;
             position: relative;
             z-index: 1;
-            cursor: pointer; /* clickable to change image */
+            cursor: pointer; 
         }
         
         .name {
@@ -644,7 +644,7 @@
         Download PDF
     </button>
     
-    <!-- Additional download option -->
+    
     <button class="download-btn" onclick="downloadAsHTML()" style="top: 70px;">
         <i class="fas fa-file-code"></i>
         Save HTML
@@ -660,7 +660,7 @@
             <div class="contact-info">
                 <div class="contact-item">
                     <i class="fas fa-envelope"></i>
-                    <span>anirbandey316@gmail.com</span>
+                    <span>anirbandey315@gmail.com</span>
                 </div>
                 <div class="contact-item">
                     <i class="fas fa-map-marker-alt"></i>
